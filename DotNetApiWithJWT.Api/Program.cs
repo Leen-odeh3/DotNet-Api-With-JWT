@@ -1,3 +1,6 @@
+using DotNetApiWithJWT.Api.Helper;
+using System.Configuration;
+
 namespace DotNetApiWithJWT.Api
 {
     public class Program
@@ -12,6 +15,8 @@ namespace DotNetApiWithJWT.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.Configure<JWT>(builder.Configuration.GetSection("JWT"));
 
             var app = builder.Build();
 
