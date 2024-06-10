@@ -1,4 +1,6 @@
-﻿namespace DotNetApiWithJWT.Api.Abstracts;
+﻿using DotNetApiWithJWT.Api.Models;
+
+namespace DotNetApiWithJWT.Api.Abstracts;
 
 public interface IAuthService
 {
