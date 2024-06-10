@@ -1,4 +1,8 @@
+using DotNetApiWithJWT.Api.Data;
 using DotNetApiWithJWT.Api.Helper;
+using DotNetApiWithJWT.Api.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
 namespace DotNetApiWithJWT.Api
@@ -17,6 +21,13 @@ namespace DotNetApiWithJWT.Api
             builder.Services.AddSwaggerGen();
 
             builder.Services.Configure<JWT>(builder.Configuration.GetSection("JWT"));
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+               options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+           );
 
             var app = builder.Build();
 
